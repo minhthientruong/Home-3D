@@ -35,7 +35,7 @@ eraWidget.init({
     minRealtimeConfigsCount: 0,        /* Số lượng tối thiểu giá trị hiện thời */
     minHistoryConfigsCount: 0,         /* Số lượng tối thiểu giá trị lịch sử */
     minActionsCount: 0,                /* Số lượng tối thiểu hành động */
-    mobileHeight: 300,                 /* Thiết lập chiều cao hiển thị trên mobile app E-Ra, mặc đinh 300px */
+    mobileHeight: 600,                 /* Thiết lập chiều cao hiển thị trên mobile app E-Ra, mặc đinh 300px */
 
     /* Hàm callback được gọi khi có cấu hình được nhận từ server */
     onConfiguration: (configuration) => {
