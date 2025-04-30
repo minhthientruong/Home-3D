@@ -5,11 +5,15 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://www.unpkg.com/@eohjsc/era-widget@1.1.3/src/index.js"></script>
-
+   
 
 </head>
+
 <body>
+ 
+
     <div class="house" id="h"> 
+
         <div class="h-lights">
           <div class="h-light"></div>
           <div class="h-light"></div>
@@ -18,11 +22,13 @@
           <div class="h-light"></div>
           <div class="h-light"></div>
         </div>
+        
         <div class="h-shadow"></div>
         <div class="alt">
           <div class="alt__front face"> </div>
           <div class="alt__back face"> </div>
           <div class="alt__right face"> </div>
+          
           <div class="alt__left face"> </div>
           <div class="alt__top face"> 
             <div class="light"></div>
@@ -38,6 +44,9 @@
           <div class="alt__bottom face"> </div>
         </div>
         <div class="alb">
+
+
+
           <div class="alb__front face"> </div>
           <div class="alb__back face"> </div>
           <div class="alb__right face"> </div>
@@ -194,7 +203,7 @@
             <div class="libro__bottom face"> </div>
           </div>
         </div>
-        
+
         <div class="fotos"> 
           <div class="foto">
             <div class="foto__front face"> </div>
@@ -213,44 +222,25 @@
             <div class="foto__bottom face"> </div>
           </div>
         </div>
-        <div class="cajas"> 
-          <div class="caja">
-            <div class="caja__front face"> </div>
-            <div class="caja__back face"> </div>
-            <div class="caja__right face"> </div>
-            <div class="caja__left face"> </div>
-            <div class="caja__top face"> </div>
-            <div class="caja__bottom face"> </div>
-          </div>
-          <div class="caja">
-            <div class="caja__front face"> </div>
-            <div class="caja__back face"> </div>
-            <div class="caja__right face"> </div>
-            <div class="caja__left face"> </div>
-            <div class="caja__top face"> </div>
-            <div class="caja__bottom face"> </div>
-          </div>
-          <div class="caja">
-            <div class="caja__front face"> </div>
-            <div class="caja__back face"> </div>
-            <div class="caja__right face"> </div>
-            <div class="caja__left face"> </div>
-            <div class="caja__top face"> </div>
-            <div class="caja__bottom face"> </div>
-          </div>
-        </div>
+    
         <div class="tv">
-          <div class="tv__front face"> </div>
-          <div class="tv__back face"> </div>
-<div class="tv__right face">
-  <video id="tv-video" autoplay muted loop>
-    <source src="video.mp4" type="video/mp4">
-  </video>
-</div>
-          <div class="tv__left face"> </div>
-          <div class="tv__top face"> </div>
-          <div class="tv__bottom face"> </div>
+          <div class="tv__front face"></div>
+          <div class="tv__back face"></div>
+        
+          <div class="tv__right face">
+            <video id="tv-video" autoplay muted loop>
+              <source src="video.mp4" type="video/mp4" />
+            </video>
+
+       
+          </div>
+        
+          <div class="tv__left face"></div>
+          <div class="tv__top face"></div>
+          <div class="tv__bottom face"></div>
+          
         </div>
+        
         <div class="repisa-t">
           <div class="repisa-t__front face"> </div>
           <div class="repisa-t__back face"> </div>
@@ -286,7 +276,11 @@
         <div class="muro">
           <div class="muro__front face"> </div>
           <div class="muro__back face"> </div>
-          <div class="muro__right face"> </div>
+          <div class="muro__right face"> <div class="environment-box"> <!-- Thêm vào đây -->
+            <p class="neon-text temp">Nhiệt độ: <span id="temperature">--</span> °C</p>
+            <p class="neon-text humi">Độ ẩm: <span id="humidity">--</span> %</p>
+           
+          </div></div>
           <div class="muro__left face"> </div>
           <div class="muro__top face"> </div>
           <div class="muro__bottom face"> </div>
@@ -376,8 +370,32 @@
           <div class="tablet__top face"> </div>
           <div class="tablet__bottom face">    </div>
         </div>
+   
       </div>
+ 
       <script src="script.js"></script>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          function getRandom(min, max) {
+            return (Math.random() * (max - min) + min).toFixed(1);
+          }
+      
+          function updateEnvironmentData() {
+            const tempEl = document.getElementById("temperature");
+            const humiEl = document.getElementById("humidity");
+      
+            if (tempEl && humiEl) {
+              tempEl.textContent = getRandom(25, 35);
+              humiEl.textContent = getRandom(40, 70);
+            } else {
+              console.warn("Không tìm thấy phần tử DOM để cập nhật dữ liệu.");
+            }
+          }
+      
+          updateEnvironmentData(); // cập nhật ngay
+          setInterval(updateEnvironmentData, 3000); // cập nhật mỗi 3s
+        });
+      </script>
 
 </body>
 </html>

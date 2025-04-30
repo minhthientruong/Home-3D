@@ -1,11 +1,102 @@
 /***********************/
 /***********************/
+.face {
+  backface-visibility: visible; /* Sửa lại từ hidden → visible */
+  transform-style: preserve-3d; /* Đảm bảo hiển thị đúng chiều không gian */
+  position: relative;
+}
+
+.neon-text {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.neon-text.temp {
+  color: #ff1a1a;
+  text-shadow:
+    0 0 10px #ff1a1a,
+    0 0 20px #ff3333,
+    0 0 40px #ff3333,
+    0 0 80px #ff0000,
+    0 0 120px #ff0000,
+    0 0 160px #ff0000;
+  font-weight: bold;
+}
+
+/* Màu neon xanh dương cho Độ ẩm */
+.neon-text.humi {
+  color: #00eaff;
+  text-shadow:
+    0 0 5px #00eaff,
+    0 0 10px #00eaff,
+    0 0 20px #00eaff,
+    0 0 40px #0ff,
+    0 0 80px #0ff;
+}
+
+
+
+
+
 /************************/
 /* Mixin para crear cubo ( Caras siempre al frente ) */
 /************************/
+
+
 /***********************/
+.light-button-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* Style cho nút */
+.light-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.light-button:hover {
+  background-color: #45a049;
+}
+
+/* Style cho trạng thái tắt của đèn */
+.light-off {
+  background-color: #f44336; /* Màu đỏ khi tắt */
+}
+
+
 /***********************/
 /**/
+.light-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.lightbulb {
+  width: 100px;
+  height: 200px;
+  background: radial-gradient(circle, #f9d71c 60%, #ffbe0f 100%);
+  border-radius: 50%;
+  box-shadow: 0px 0px 40px 20px rgba(255, 255, 0, 0.6);
+  transition: opacity 0.3s ease;
+}
+
+.lightbulb.off {
+  opacity: 0.2; /* Ánh sáng mờ khi tắt */
+}
+
+.tv-video {
+  transition: opacity 0.5s ease;
+}
+
 .scene-container {
   width: 100vw;
   height: 100vh;
@@ -952,7 +1043,14 @@ body {
 .repisa-b {
   transform: translateZ(5vw);
 }
-
+#toggle-tv {
+  position: absolute;  /* Định vị tuyệt đối để có thể đặt chính xác */
+  bottom: 10px;       /* Ví dụ: đặt nút ở dưới cùng của TV */
+  left: 50%;          /* Căn giữa nút theo chiều ngang */
+  transform: translateX(-50%); /* Canh giữa chính xác */
+  z-index: 10;          /* Đảm bảo nút ở trên video */
+  /* Các thuộc tính CSS khác cho nút (màu sắc, kích thước, v.v.) */
+}
 .tv {
   position: absolute;
   left: 1.51vw;
@@ -961,11 +1059,18 @@ body {
   height: 12vw;
   transform: translateZ(8vw);
 }
+
 .tv__front {
   width: 0.5vw;
   height: 6vw;
   transform-origin: bottom left;
   transform: rotateX(-90deg) translateZ(6vw);
+}
+#tv-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transition: opacity 0.5s ease;
 }
 .tv__back {
   width: 0.5vw;
@@ -978,6 +1083,16 @@ body {
   height: 6vw;
   transform-origin: top left;
   transform: rotateY(90deg) rotateZ(-90deg) translateZ(0.5vw) translateX(-12vw) translateY(-6vw);
+}
+.tv__right video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+video.paused {
+  opacity: 0.1;
+  filter: grayscale(1);
 }
 .tv__left {
   width: 12vw;
@@ -1008,13 +1123,13 @@ body {
   border: 0.125vw solid black;
   animation: pantalla-tv 0.25s infinite alternate;
 }
+
 .tv__right::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   box-shadow: 0.125vw 0.125vw 1vw rgba(80.9625, 137.4875, 250.5375, 0.5), -0.125vw 0.125vw 1vw rgba(80.9625, 137.4875, 250.5375, 0.5), 0.125vw -0.125vw 1vw rgba(80.9625, 137.4875, 250.5375, 0.5), -0.125vw -0.125vw 1vw rgba(80.9625, 137.4875, 250.5375, 0.5);
-  background-image: url("https://rawcdn.githack.com/ricardoolivaalonso/Codepen/43200238c3177b02a97423fa6cc23f8bfcc5c105/Room/gif.gif");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: bottom;

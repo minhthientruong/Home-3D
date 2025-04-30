@@ -13,6 +13,9 @@
     transition: transform 0.3s ease;
     transform-origin: center center;
   }
+  // code
+
+
   
 // $bg-1: #322e4a;
 $bg-1: hsl(250, 28%, 11%);
@@ -681,66 +684,79 @@ $depth-el: 1vw;
     }
 }
 .repisa-b{ transform: translateZ(5vw);}
-.tv{
+.tv {
     $width-el: .5vw;
     $height-el: 6vw;
     $depth-el: 6vw;
-
+  
     @include cube($width-el, $height-el, $depth-el);
     position: absolute;
     left: 1.51vw;
     top: 8vw;
     width: .5vw;
     height: 12vw;
-
     transform: translateZ(8vw);
-
-    &__front{ background-color: $black-3; }
-    &__back{ background-color: $black-3; }
-    &__right{
-        background-color: lighten($neon-1, 15);
-        border: .125vw solid darken($black-3, 10);
-        &::before{
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            box-shadow:
-                .125vw .125vw 1vw rgba($neon-1, .5),
-                -.125vw .125vw 1vw rgba($neon-1, .5),
-                .125vw -.125vw 1vw rgba($neon-1, .5),
-                -.125vw -.125vw 1vw rgba($neon-1, .5)
-            ;
-
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/2/21/Flag_of_Vietnam.svg');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: bottom;
-            opacity: .8;
-        }
-        animation: pantalla-tv .25s infinite alternate;
-
+  
+    &__front,
+    &__back,
+    &__top,
+    &__bottom {
+      background-color: $black-3;
     }
-    &__left{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: $black-3;
-
-        &::before{
-            content: '';
-            position: absolute;
-            width: 13vw;
-            height: 7vw;
-            background-image: radial-gradient(rgba(darken($neon-2, 5), .95), rgba(darken($neon-1, 5), .95));
-            filter: blur(1.25vw);
-
-            animation: luz-tv .25s infinite alternate;
-        }
+  
+    &__right {
+      background-color: lighten($neon-1, 15);
+      border: .125vw solid darken($black-3, 10);
+  
+      &::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-shadow:
+          .125vw .125vw 1vw rgba($neon-1, .5),
+          -.125vw .125vw 1vw rgba($neon-1, .5),
+          .125vw -.125vw 1vw rgba($neon-1, .5),
+          -.125vw -.125vw 1vw rgba($neon-1, .5);
+        background-image: url('https://rawcdn.githack.com/ricardoolivaalonso/Codepen/43200238c3177b02a97423fa6cc23f8bfcc5c105/Room/gif.gif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom;
+        opacity: .8;
+      }
+  
+      animation: pantalla-tv .25s infinite alternate;
     }
-    &__top{ background-color: $black-3; }
-    &__bottom{ background-color: $black-3; }
-}
+  
+    &__left {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $black-3;
+  
+      &::before {
+        content: '';
+        position: absolute;
+        width: 13vw;
+        height: 7vw;
+        background-image: radial-gradient(
+          rgba(darken($neon-2, 5), .95),
+          rgba(darken($neon-1, 5), .95)
+        );
+        filter: blur(1.25vw);
+        animation: luz-tv .25s infinite alternate;
+      }
+    }
+  
+    // ----- EFFECT WHEN TV IS OFF -----
+    .tv__right video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: opacity 0.3s ease;
+      }
+  }
+  
 .librero{
     $width-el: 12vw;
     $height-el: .25vw;
